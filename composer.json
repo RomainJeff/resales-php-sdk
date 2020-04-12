@@ -1,0 +1,16 @@
+{
+  "name": "romainjeff/resales-php-sdk",
+  "type": "library",
+  "description": "",
+  "autoload": {
+    "psr-4": {
+      "Romainjeff\\Resales\\": "src/"
+    }
+  },
+  "require": {
+    "guzzlehttp/guzzle": "^6.3"
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^4.3"
+  }
+}

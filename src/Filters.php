@@ -142,6 +142,12 @@ class Filters
         return $this;
     }
 
+    public function excludeNewDevelopment()
+    {
+        $this->filters['P_New_Devs'] = 0;
+        return $this;
+    }
+
     /**
      * @return string[]
      */

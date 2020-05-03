@@ -3,6 +3,8 @@ namespace Romainjeff\Resales\Types;
 
 /**
  * https://webkit.resales-online.com/weblink/xml/V4-2/SearchFeaturesXML.asp?p1={ID}&p2={APIKEY}
+ * 
+ * Format: < Cat_Type > + < ConfigName > + < Feature attribute value > + ‘_2’
  */
 class Features
 {

@@ -12,6 +12,7 @@ class Features
     const PRIVATE_POOL    = '1Pool2_2';
     const COMMUNAL_POOL   = '1Pool1_2';
     const SEA_VIEW        = '1Views1_2';
+    const MOUNTAIN_VIEW   = '1Views2_2';
     const GOLF_VIEW       = '1Views3_2';
     const PRIVATE_TERRACE = '1Features5_2';
 }

@@ -17,4 +17,5 @@ class Features
     const MOUNTAIN_VIEW   = '1Views2_2';
     const GOLF_VIEW       = '1Views3_2';
     const PRIVATE_TERRACE = '1Features5_2';
+    const REDUCED         = '1Category10_2';
 }

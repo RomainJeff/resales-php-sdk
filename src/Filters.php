@@ -72,7 +72,7 @@ class Filters
      */
     public function withAtLeastBeds($beds)
     {
-        $this->filters['P_Beds'] = $beds .'+';
+        $this->filters['P_Beds'] = $beds .'x';
         return $this;
     }
 
@@ -82,7 +82,7 @@ class Filters
      */
     public function withAtLeastBaths($baths)
     {
-        $this->filters['P_Baths'] = $baths .'+';
+        $this->filters['P_Baths'] = $baths .'x';
         return $this;
     }
 

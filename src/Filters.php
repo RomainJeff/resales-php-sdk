@@ -6,6 +6,11 @@ class Filters
     /** @var string[] */
     private $filters;
 
+    public function __construct()
+    {
+        $this->filters = [];
+    }
+
     /**
      * @param int $lang
      * @return Filters
@@ -112,7 +117,7 @@ class Filters
      */
     public function displayedProperties($number)
     {
-        $this->filters['P_PageSize'] = $number;
+        $this->filters['p_PageSize'] = $number;
         return $this;
     }
 

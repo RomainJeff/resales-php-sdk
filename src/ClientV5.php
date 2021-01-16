@@ -41,25 +41,30 @@ class ClientV5
      */
     public function getProperties(Filters $filters) {
         $query = [
-            'p1'    => $this->agentId,
-            'p2'    => $this->apiKey,
-            'apiId' => $this->apiId,
+            'p1'        => $this->agentId,
+            'p2'        => $this->apiKey,
+            'P_ApiId'   => $this->apiId,
         ];
 
         $response = $this->client->get(self::SEARCH_PROPERTIES_ENDPOINT, [
             'query' => array_merge($query, $filters->getFilters())
         ]);
-
-        $xml = simplexml_load_string((string) $response->getBody());
+        $json = json_decode((string) $response->getBody(), true);
 
         // No result
-        if (!isset($xml->Property)) {
+        if (!isset($json['Property']) || empty($json['Property'])) {
             return [];
         }
 
+        $responseProperties = $json['Property'];
+        // if Property is not an array we make it so
+        if (isset($json['Property']['Reference'])) {
+            $responseProperties = [ $responseProperties ];
+        }
+
         $properties = [];
-        foreach ($xml->Property as $property) {
-            $properties[] = ListProperty::createFromXML($property);
+        foreach ($responseProperties as $property) {
+            $properties[] = ListProperty::createFromJSON($property);
         }
 
         return $properties;
@@ -71,9 +76,9 @@ class ClientV5
      */
     public function getProperty($referenceID) {
         $query = [
-            'p1'    => $this->agentId,
-            'p2'    => $this->apiKey,
-            'apiId' => $this->apiId,
+            'p1'        => $this->agentId,
+            'p2'        => $this->apiKey,
+            'P_ApiId'   => $this->apiId,
         ];
 
         $response = $this->client->get(self::PROPERTY_DETAILS_ENDPOINT, [

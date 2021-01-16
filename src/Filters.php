@@ -27,7 +27,7 @@ class Filters
      */
     public function inCountry($country)
     {
-        $this->filters['P_Country'] = $country;
+        $this->filters['p_Country'] = $country;
         return $this;
     }
 
@@ -37,7 +37,7 @@ class Filters
      */
     public function inAreas(array $area)
     {
-        $this->filters['P_Area'] = implode(',', $area);
+        $this->filters['p_Area'] = implode(',', $area);
         return $this;
     }
 
@@ -47,7 +47,7 @@ class Filters
      */
     public function inCities(array $cities)
     {
-        $this->filters['P_Location'] = implode(',', $cities);
+        $this->filters['p_Location'] = implode(',', $cities);
         return $this;
     }
 
@@ -57,7 +57,7 @@ class Filters
      */
     public function withPriceAtLeast($price)
     {
-        $this->filters['P_Min'] = $price;
+        $this->filters['p_Min'] = $price;
         return $this;
     }
 
@@ -67,7 +67,7 @@ class Filters
      */
     public function withPriceLessThan($price)
     {
-        $this->filters['P_Max'] = $price;
+        $this->filters['p_Max'] = $price;
         return $this;
     }
 
@@ -77,7 +77,7 @@ class Filters
      */
     public function withAtLeastBeds($beds)
     {
-        $this->filters['P_Beds'] = $beds .'x';
+        $this->filters['p_Beds'] = $beds .'x';
         return $this;
     }
 
@@ -87,7 +87,7 @@ class Filters
      */
     public function withAtLeastBaths($baths)
     {
-        $this->filters['P_Baths'] = $baths .'x';
+        $this->filters['p_Baths'] = $baths .'x';
         return $this;
     }
 
@@ -97,7 +97,7 @@ class Filters
      */
     public function withPropertyTypes(array $propertyTypes)
     {
-        $this->filters['P_PropertyTypes'] = implode(',', $propertyTypes);
+        $this->filters['p_PropertyTypes'] = implode(',', $propertyTypes);
         return $this;
     }
 
@@ -127,7 +127,7 @@ class Filters
      */
     public function pageNumber($page)
     {
-        $this->filters['P_PageNo'] = $page;
+        $this->filters['p_PageNo'] = $page;
         return $this;
     }
 
@@ -137,19 +137,19 @@ class Filters
      */
     public function withReferences(array $references)
     {
-        $this->filters['P_RefId'] = implode(',', $references);
+        $this->filters['p_RefId'] = implode(',', $references);
         return $this;
     }
 
     public function onlyNewDevelopment()
     {
-        $this->filters['P_New_Devs'] = 2;
+        $this->filters['p_New_Devs'] = 'only';
         return $this;
     }
 
     public function excludeNewDevelopment()
     {
-        $this->filters['P_New_Devs'] = 0;
+        $this->filters['p_New_Devs'] = 'exclude';
         return $this;
     }
 

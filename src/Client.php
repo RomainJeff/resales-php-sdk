@@ -1,11 +1,10 @@
 <?php
 namespace Romainjeff\Resales;
 
-
 use Romainjeff\Resales\VO\ListProperty;
 use Romainjeff\Resales\VO\Property;
 
-class Client
+class Client implements ResalesClient
 {
     const SEARCH_PROPERTIES_ENDPOINT = 'SearchResaleXML.asp';
     const PROPERTY_DETAILS_ENDPOINT = 'PropertyDetailsXML.asp';

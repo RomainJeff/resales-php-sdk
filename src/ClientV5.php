@@ -85,13 +85,13 @@ class ClientV5
             'query' => array_merge($query, [ 'P_RefId' => $referenceID ])
         ]);
 
-        $xml = simplexml_load_string((string) $response->getBody());
+        $json = json_decode((string) $response->getBody(), true);
 
         // No result
-        if (!isset($xml->Property)) {
+        if (!isset($json['Property']) || empty($json['Property'])) {
             return new Property();
         }
 
-        return Property::createFromXML($xml->Property);
+        return Property::createFromJSON($json['Property']);
     }
 }

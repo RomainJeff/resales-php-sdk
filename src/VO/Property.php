@@ -300,4 +300,54 @@ class Property
 
         return $property;
     }
+
+    public static function createFromJSON(array $json)
+    {
+        $property = new self();
+        $property->reference = $json['Reference'];
+        $property->agencyReference = $json['AgencyRef'];
+        $property->country = $json['Country'];
+        $property->area = $json['Area'];
+        $property->location = $json['Location'];
+        $property->type = $json['ROLType'];
+        $property->subType = $json['ROLSubType'];
+        $property->bedrooms = (int) $json['Bedrooms'];
+        $property->bathrooms = (int) $json['Bathrooms'];
+        $property->currency = $json['Currency'];
+        $property->originalPrice = (int) $json['OriginalPrice'];
+        $property->price = (int) $json['Price'];
+        $property->surface = (int) $json['Built'];
+        $property->terraceSurface = (int) $json['Terrace'];
+        $property->plotSurface = (int) $json['GardenPlot'];
+        $property->hasPool = (int) $json['Pool'] === 1;
+        $property->hasParking = (int) $json['Parking'] === 1;
+        $property->hasGarden = (int) $json['Garden'] === 1;
+        $property->description = $json['Description'];
+        $property->resalesLink = self::RESALES_LINK . str_replace('R', '', $property->reference);
+
+        if (empty($json['PropertyFeatures'])) {
+            return $property;
+        }
+
+        // extract features
+        foreach ($json['PropertyFeatures']['Category'] as $category) {
+            $name = $category['@attributes']['Type'];
+            $property->features[$name] = [];
+
+            if (is_array($category['Value'])) {
+                foreach ($category['Value'] as $feature) {
+                    $property->features[$name][] = $feature;
+                }
+            } else {
+                $property->features[$name][] = $category['Value'];
+            }
+        }
+
+        // extract pictures
+        foreach ($json['Pictures']['Picture'] as $picture) {
+            $property->pictures[] = $picture['PictureURL'];
+        }
+
+        return $property;
+    }
 }

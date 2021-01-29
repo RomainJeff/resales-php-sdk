@@ -107,6 +107,7 @@ class Filters
      */
     public function withFeature($feature)
     {
+        $this->filters['p_MustHaveFeatures'] = 2;
         $this->filters[$feature] = 1;
         return $this;
     }

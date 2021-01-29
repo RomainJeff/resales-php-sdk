@@ -332,7 +332,7 @@ class ListProperty
 
         // extract features
         foreach ($json['PropertyFeatures']['Category'] as $category) {
-            if (!isset($category['@@attributes'])) continue;
+            if (!isset($category['@attributes'])) continue;
 
             $name = $category['@attributes']['Type'];
             $property->features[$name] = [];

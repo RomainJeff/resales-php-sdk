@@ -153,6 +153,18 @@ class Filters
         return $this;
     }
 
+    public function sortByNewest()
+    {
+        $this->filters['p_SortType'] = 5;
+        return $this;
+    }
+
+    public function sortByOldest()
+    {
+        $this->filters['p_SortType'] = 6;
+        return $this;
+    }
+
     /**
      * @return string[]
      */

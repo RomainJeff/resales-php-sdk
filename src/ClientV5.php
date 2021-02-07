@@ -48,7 +48,7 @@ class ClientV5 implements ResalesClient
         $response = $this->client->get(self::SEARCH_PROPERTIES_ENDPOINT, [
             'query' => array_merge($query, $filters->getFilters())
         ]);
-        $json = json_decode((string) $response->getBody(), true);
+        $json = json_decode($response->getBody()->getContents(), true);
 
         // No result
         if (!isset($json['Property']) || empty($json['Property'])) {
@@ -84,7 +84,7 @@ class ClientV5 implements ResalesClient
             'query' => array_merge($query, [ 'P_RefId' => $referenceID ])
         ]);
 
-        $json = json_decode((string) $response->getBody(), true);
+        $json = json_decode($response->getBody()->getContents(), true);
 
         // No result
         if (!isset($json['Property']) || empty($json['Property'])) {

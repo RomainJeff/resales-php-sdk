@@ -44,7 +44,7 @@ class Client implements ResalesClient
            'query' => array_merge($query, $filters->getFilters())
         ]);
 
-        $xml = simplexml_load_string((string) $response->getBody());
+        $xml = simplexml_load_string($response->getBody()->getContents());
 
         // No result
         if (!isset($xml->Property)) {
@@ -73,7 +73,7 @@ class Client implements ResalesClient
             'query' => array_merge($query, [ 'P_RefId' => $referenceID ])
         ]);
 
-        $xml = simplexml_load_string((string) $response->getBody());
+        $xml = simplexml_load_string($response->getBody()->getContents());
 
         // No result
         if (!isset($xml->Property)) {

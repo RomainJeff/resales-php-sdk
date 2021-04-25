@@ -1,6 +1,7 @@
 <?php
 namespace Romainjeff\Resales;
 
+use Romainjeff\Resales\VO\ListPagination;
 use Romainjeff\Resales\VO\ListProperty;
 use Romainjeff\Resales\VO\Property;
 
@@ -57,6 +58,29 @@ class Client implements ResalesClient
         }
 
         return $properties;
+    }
+
+    public function getPaginationFromFilters(Filters $filters)
+    {
+        $query = [
+            'p1'        => $this->agentId,
+            'p2'        => $this->apiKey,
+        ];
+
+        $response = $this->client->get(self::SEARCH_PROPERTIES_ENDPOINT, [
+            'query' => array_merge($query, $filters->getFilters())
+        ]);
+        $xml = simplexml_load_string($response->getBody()->getContents());
+
+        // No result
+        if (!isset($xml->Property)) {
+            return null;
+        }
+
+        return new ListPagination(
+            $xml->QueryInfo->PropertyCount,
+            $xml->QueryInfo->PropertiesPerPage
+        );
     }
 
     /**

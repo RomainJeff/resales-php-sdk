@@ -12,6 +12,7 @@ class PropertyTypes
     const HOUSE                     = '2-1';
     const HOUSE_DETACHED            = '2-2';
     const HOUSE_SEMI_DETACHED       = '2-4';
+    const HOUSE_TOWN                = '2-5';
     const HOUSE_FINCA_CORTIJO       = '2-6';
     const HOUSE_TERRACED            = '2-5';
     const PLOT                      = '3-1';

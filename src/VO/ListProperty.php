@@ -65,6 +65,9 @@ class ListProperty
     /** @var string */
     private $mainPicture;
 
+    /** @var array */
+    private $pictures;
+
     /** @var string */
     private $description;
 
@@ -240,6 +243,14 @@ class ListProperty
     }
 
     /**
+     * @return array
+     */
+    public function getPictures()
+    {
+        return $this->pictures;
+    }
+
+    /**
      * @return string
      */
     public function getDescription()
@@ -280,9 +291,19 @@ class ListProperty
         $property->hasPool = (int) $xml->Pool === 1;
         $property->hasParking = (int) $xml->Parking === 1;
         $property->hasGarden = (int) $xml->Garden === 1;
-        $property->mainPicture = (string) $xml->MainImage;
         $property->description = (string) $xml->Description;
         $property->resalesLink = self::RESALES_LINK . str_replace('R', '', $property->reference);
+
+        // extract pictures
+        if (!isset($xml->Pictures)) {
+            $property->mainPicture = (string) $xml->MainImage;
+            $property->pictures[] = $property->getMainPicture();
+        } else {
+            foreach ($xml->Pictures->Picture as $picture) {
+                $property->pictures[] = (string) $picture->PictureURL;
+            }
+            $property->mainPicture = $property->getPictures()[0];
+        }
 
         // extract features
         foreach ($xml->PropertyFeatures->Category as $category) {
@@ -322,9 +343,19 @@ class ListProperty
         $property->hasPool = (int) $json['Pool'] === 1;
         $property->hasParking = (int) $json['Parking'] === 1;
         $property->hasGarden = (int) $json['Garden'] === 1;
-        $property->mainPicture = $json['MainImage'];
         $property->description = $json['Description'];
         $property->resalesLink = self::RESALES_LINK . str_replace('R', '', $property->reference);
+
+        // extract pictures
+        if (!isset($json['Pictures'])) {
+            $property->mainPicture = $json['MainImage'];
+            $property->pictures[] = $property->getMainPicture();
+        } else {
+            foreach ($json['Pictures']['Picture'] as $picture) {
+                $property->pictures[] = $picture['PictureURL'];
+            }
+            $property->mainPicture = $property->getPictures()[0];
+        }
 
         if (empty($json['PropertyFeatures'])) {
             return $property;

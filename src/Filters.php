@@ -154,6 +154,15 @@ class Filters
         return $this;
     }
 
+    /**
+     * @param int $count
+     */
+    public function imagesCount($count)
+    {
+        $this->filters['p_images'] = $count;
+        return $this;
+    }
+
     public function sortByNewest()
     {
         $this->filters['p_SortType'] = 5;

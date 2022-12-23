@@ -7,8 +7,8 @@ use Romainjeff\Resales\VO\Property;
 
 class Client implements ResalesClient
 {
-    const SEARCH_PROPERTIES_ENDPOINT = 'SearchResaleXML.asp';
-    const PROPERTY_DETAILS_ENDPOINT = 'PropertyDetailsXML.asp';
+    const SEARCH_PROPERTIES_ENDPOINT = 'SearchProperties';
+    const PROPERTY_DETAILS_ENDPOINT = 'PropertyDetails';
 
     /** @var \GuzzleHttp\Client */
     private $client;
@@ -19,16 +19,20 @@ class Client implements ResalesClient
     /** @var int */
     private $agentId;
 
+    /** @var int */
+    private $apiId;
+
     /**
      * @param \GuzzleHttp\Client $client
      * @param string             $apiKey
      * @param int                $agentId
      */
-    public function __construct(\GuzzleHttp\Client $client, $apiKey, $agentId)
+    public function __construct(\GuzzleHttp\Client $client, $apiKey, $agentId, $apiId)
     {
         $this->client  = $client;
         $this->apiKey  = $apiKey;
         $this->agentId = $agentId;
+        $this->apiId   = $apiId;
     }
 
     /**
@@ -37,24 +41,30 @@ class Client implements ResalesClient
      */
     public function getProperties(Filters $filters) {
         $query = [
-            'p1' => $this->agentId,
-            'p2' => $this->apiKey,
+            'p_apiid'   => $this->agentId,
+            'p1'        => $this->apiKey,
+            'p2'        => $this->apiId,
         ];
 
         $response = $this->client->get(self::SEARCH_PROPERTIES_ENDPOINT, [
-           'query' => array_merge($query, $filters->getFilters())
+            'query' => array_merge($query, $filters->getFilters())
         ]);
-
-        $xml = simplexml_load_string($response->getBody()->getContents());
+        $json = json_decode($response->getBody()->getContents(), true);
 
         // No result
-        if (!isset($xml->Property)) {
+        if (!isset($json['Property']) || empty($json['Property'])) {
             return [];
         }
 
+        $responseProperties = $json['Property'];
+        // if Property is not an array we make it so
+        if (isset($json['Property']['Reference'])) {
+            $responseProperties = [ $responseProperties ];
+        }
+
         $properties = [];
-        foreach ($xml->Property as $property) {
-            $properties[] = ListProperty::createFromXML($property);
+        foreach ($responseProperties as $property) {
+            $properties[] = ListProperty::createFromJSON($property);
         }
 
         return $properties;
@@ -63,23 +73,24 @@ class Client implements ResalesClient
     public function getPaginationFromFilters(Filters $filters)
     {
         $query = [
-            'p1'        => $this->agentId,
-            'p2'        => $this->apiKey,
+            'p_apiid'   => $this->agentId,
+            'p1'        => $this->apiKey,
+            'p2'        => $this->apiId,
         ];
 
         $response = $this->client->get(self::SEARCH_PROPERTIES_ENDPOINT, [
             'query' => array_merge($query, $filters->getFilters())
         ]);
-        $xml = simplexml_load_string($response->getBody()->getContents());
+        $json = json_decode($response->getBody()->getContents(), true);
 
         // No result
-        if (!isset($xml->Property)) {
+        if (!isset($json['Property']) || empty($json['Property'])) {
             return null;
         }
 
         return new ListPagination(
-            $xml->QueryInfo->PropertyCount,
-            $xml->QueryInfo->PropertiesPerPage
+            $json['QueryInfo']['PropertyCount'],
+            $json['QueryInfo']['PropertiesPerPage']
         );
     }
 
@@ -89,21 +100,22 @@ class Client implements ResalesClient
      */
     public function getProperty($referenceID) {
         $query = [
-            'p1' => $this->agentId,
-            'p2' => $this->apiKey,
+            'p_apiid'   => $this->agentId,
+            'p1'        => $this->apiKey,
+            'p2'        => $this->apiId,
         ];
 
         $response = $this->client->get(self::PROPERTY_DETAILS_ENDPOINT, [
             'query' => array_merge($query, [ 'P_RefId' => $referenceID ])
         ]);
 
-        $xml = simplexml_load_string($response->getBody()->getContents());
+        $json = json_decode($response->getBody()->getContents(), true);
 
         // No result
-        if (!isset($xml->Property)) {
+        if (!isset($json['Property']) || empty($json['Property'])) {
             return new Property();
         }
 
-        return Property::createFromXML($xml->Property);
+        return Property::createFromJSON($json['Property']);
     }
 }

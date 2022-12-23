@@ -2,7 +2,7 @@
 namespace Romainjeff\Resales\Types;
 
 /**
- * https://webkit.resales-online.com/weblink/xml/V4-2/SearchPropertyTypesXML.asp?p1={ID}&p2={APIKEY}
+ * https://webapi.resales-online.com/V6/SearchPropertyTypes?p_apiid={FILTER_ID}&p1={AGENTID}&p2={APIKEY}
  */
 class PropertyTypes
 {

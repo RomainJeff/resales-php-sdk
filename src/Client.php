@@ -26,6 +26,7 @@ class Client implements ResalesClient
      * @param \GuzzleHttp\Client $client
      * @param string             $apiKey
      * @param int                $agentId
+     * @param int                $apiId
      */
     public function __construct(\GuzzleHttp\Client $client, $apiKey, $agentId, $apiId)
     {
@@ -41,9 +42,9 @@ class Client implements ResalesClient
      */
     public function getProperties(Filters $filters) {
         $query = [
-            'p_apiid'   => $this->agentId,
-            'p1'        => $this->apiKey,
-            'p2'        => $this->apiId,
+            'p_apiid'   => $this->apiId,
+            'p1'        => $this->agentId,
+            'p2'        => $this->apiKey,
         ];
 
         $response = $this->client->get(self::SEARCH_PROPERTIES_ENDPOINT, [
@@ -73,9 +74,9 @@ class Client implements ResalesClient
     public function getPaginationFromFilters(Filters $filters)
     {
         $query = [
-            'p_apiid'   => $this->agentId,
-            'p1'        => $this->apiKey,
-            'p2'        => $this->apiId,
+            'p_apiid'   => $this->apiId,
+            'p1'        => $this->agentId,
+            'p2'        => $this->apiKey,
         ];
 
         $response = $this->client->get(self::SEARCH_PROPERTIES_ENDPOINT, [
@@ -100,9 +101,9 @@ class Client implements ResalesClient
      */
     public function getProperty($referenceID) {
         $query = [
-            'p_apiid'   => $this->agentId,
-            'p1'        => $this->apiKey,
-            'p2'        => $this->apiId,
+            'p_apiid'   => $this->apiId,
+            'p1'        => $this->agentId,
+            'p2'        => $this->apiKey,
         ];
 
         $response = $this->client->get(self::PROPERTY_DETAILS_ENDPOINT, [

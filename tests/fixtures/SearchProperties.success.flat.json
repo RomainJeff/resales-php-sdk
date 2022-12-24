@@ -1,0 +1,57 @@
+{
+  "transaction": {
+    "status": "success",
+    "incomingIp": "80.26.37.155",
+    "version": "6.0",
+    "service": "Search Properties",
+    "datetime": "05-09-2019 18:14:44"
+  },
+  "QueryInfo": {
+    "ApiId": "5950",
+    "QueryId": "21048e41-cff7-11e9-997f-842b2b766523",
+    "SearchType": "Sale (own properties For RSO) ",
+    "PropertyCount": 1,
+    "CurrentPage": 1,
+    "PropertiesPerPage": 10
+  },
+  "Property": {
+    "Reference": "R3479851",
+    "AgencyRef": "1175/3232",
+    "Country": "Spain",
+    "Province": "Málaga",
+    "Area": "Costa del Sol",
+    "Location": "Coín",
+    "SubLocation": "",
+    "PropertyType": {
+      "NameType": "Residential Plot",
+      "Type": "Plot",
+      "TypeId": "3-1",
+      "Subtype1": "Residential Plot",
+      "SubtypeId1": "3-2"
+    },
+    "Status": {
+      "system": "Available",
+      "en": "Available"
+    },
+    "Bedrooms": "0",
+    "Bathrooms": "0",
+    "Currency": "EUR",
+    "Price": "92000",
+    "OriginalPrice": 92000,
+    "Dimensions": "Metres",
+    "Built": 0,
+    "Terrace": 0,
+    "GardenPlot": 600,
+    "CO2Rated": "",
+    "EnergyRated": "",
+    "OwnProperty": "1",
+    "Pool": 0,
+    "Parking": 0,
+    "Garden": 0,
+    "Description": "This is a test property and not real.\r\nENGLISH DESCRIPTION IS HERE.\r\nThis is a test property and not real.\r\nENGLISH DESCRIPTION IS HERE.\r\nThis is a test property and not real.\r\nENGLISH DESCRIPTION IS HERE.\r\nThis is a test property and not real.\r\nENGLISH DESCRIPTION IS HERE.",
+    "PropertyFeatures": {
+      "Category": []
+    },
+    "MainImage": "https://media-webapi.resales-online.com/live/ShowImageXML.asp?SecId=rsoaslhkxyrotwx&Id=P1&ImgId=W1023133&z=1565604842"
+  }
+}

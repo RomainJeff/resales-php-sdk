@@ -1,0 +1,17 @@
+{
+  "transaction": {
+    "status": "success",
+    "incomingIp": "80.26.37.155",
+    "version": "6.0",
+    "service": "Search Properties",
+    "datetime": "05-09-2019 18:14:44"
+  },
+  "QueryInfo": {
+    "ApiId": "5950",
+    "QueryId": "21048e41-cff7-11e9-997f-842b2b766523",
+    "SearchType": "Sale (own properties For RSO) ",
+    "PropertyCount": 0,
+    "CurrentPage": 1,
+    "PropertiesPerPage": 10
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "transaction": {
+    "status": "success",
+    "incomingIp": "80.26.37.155",
+    "version": "6.0",
+    "service": "Property Details",
+    "datetime": "06-09-2019 14:25:06"
+  },
+  "QueryInfo": {
+    "ApiId": "5950",
+    "QueryId": ""
+  },
+  "Property": {
+    "Reference": "R3479767",
+    "AgencyRef": "10031/3232",
+    "Status": {
+      "system": "Available",
+      "en": "Available",
+      "es": "Disponible"
+    },
+    "Country": "Spain",
+    "Province": "Málaga",
+    "Area": "Costa del Sol East",
+    "Location": "Moclinejo",
+    "SubLocation": "",
+    "PropertyType": {
+      "NameType": "Adosada",
+      "Type": "House",
+      "TypeId": "2-1",
+      "Subtype1": "Adosada",
+      "SubtypeId1": "2-5"
+    },
+    "Decree218": "0",
+    "Bedrooms": "4",
+    "Bathrooms": "3",
+    "Currency": "EUR",
+    "Price": 179000,
+    "OriginalPrice": 179000,
+    "Community_Fees_Year": "0",
+    "Basura_Tax_Year": "0",
+    "IBI_Fees_Year": "0",
+    "Dimensions": "Metres",
+    "Built": 147,
+    "Terrace": 0,
+    "GardenPlot": 205,
+    "EnergyRating": {
+      "CO2Rated": "",
+      "CO2Value": "",
+      "EnergyRated": "",
+      "EnergyValue": "",
+      "Image": ""
+    },
+    "GpsX": "0",
+    "GpsY": "0",
+    "OwnProperty": "1",
+    "Pool": 1,
+    "Parking": 0,
+    "Garden": 1,
+    "CompletionDate": "1970-01-01",
+    "BuiltYear": "Unknown",
+    "Description": "This is a test property and not real.\nSPANISH DESCRIPTION IS HERE.\nThis is a test property and not real.\nSPANISH DESCRIPTION IS HERE.\nThis is a test property and not real.\nSPANISH DESCRIPTION IS HERE.\nThis is a test property and not real.\nSPANISH DESCRIPTION IS HERE.",
+    "PropertyFeatures": {
+      "Category": [
+        {
+          "Type": "Piscina",
+          "Value": [
+            "Privada"
+          ]
+        },
+        {
+          "Type": "Caracteristicas",
+          "Value": [
+            "Terraza Privada"
+          ]
+        },
+        {
+          "Type": "Jardin",
+          "Value": [
+            "Comunitario"
+          ]
+        },
+        {
+          "Type": "Servicios Públicos",
+          "Value": [
+            "Electricidad",
+            "Agua Potable"
+          ]
+        }
+      ]
+    },
+    "Pictures": {
+      "Count": "13",
+      "Picture": [
+        {
+          "Id": 1,
+          "PictureURL": "https://media-webapi.resales-online.com/live/ShowImageXML.asp?SecId=hxeisxpgsvainlo&Id=P1&ImgId=W1023133&z=1565604842"
+        },
+        {
+          "Id": 2,
+          "PictureURL": "https://media-webapi.resales-online.com/live/ShowImageXML.asp?SecId=hxeisxpgsvainlo&Id=P2&ImgId=W1023133&z=1565604842"
+        },
+        {
+          "Id": 3,
+          "PictureURL": "https://media-webapi.resales-online.com/live/ShowImageXML.asp?SecId=hxeisxpgsvainlo&Id=P3&ImgId=W1023133&z=1565604842"
+        },
+        {
+          "Id": 4,
+          "PictureURL": "https://media-webapi.resales-online.com/live/ShowImageXML.asp?SecId=hxeisxpgsvainlo&Id=P4&ImgId=W1023133&z=1565604842"
+        },
+        {
+          "Id": 5,
+          "PictureURL": "https://media-webapi.resales-online.com/live/ShowImageXML.asp?SecId=hxeisxpgsvainlo&Id=P5&ImgId=W1023133&z=1565604842"
+        },
+        {
+          "Id": 6,
+          "PictureURL": "https://media-webapi.resales-online.com/live/ShowImageXML.asp?SecId=hxeisxpgsvainlo&Id=P6&ImgId=W1023133&z=1565604842"
+        },
+        {
+          "Id": 7,
+          "PictureURL": "https://media-webapi.resales-online.com/live/ShowImageXML.asp?SecId=hxeisxpgsvainlo&Id=P7&ImgId=W1023133&z=1565604842"
+        },
+        {
+          "Id": 8,
+          "PictureURL": "https://media-webapi.resales-online.com/live/ShowImageXML.asp?SecId=hxeisxpgsvainlo&Id=P8&ImgId=W1023133&z=1565604842"
+        },
+        {
+          "Id": 9,
+          "PictureURL": "https://media-webapi.resales-online.com/live/ShowImageXML.asp?SecId=hxeisxpgsvainlo&Id=P9&ImgId=W1023133&z=1565604842"
+        },
+        {
+          "Id": 10,
+          "PictureURL": "https://media-webapi.resales-online.com/live/ShowImageXML.asp?SecId=hxeisxpgsvainlo&Id=P10&ImgId=W1023133&z=1565604842"
+        },
+        {
+          "Id": 11,
+          "PictureURL": "https://media-webapi.resales-online.com/live/ShowImageXML.asp?SecId=hxeisxpgsvainlo&Id=P11&ImgId=W1023133&z=1565604842"
+        },
+        {
+          "Id": 12,
+          "PictureURL": "https://media-webapi.resales-online.com/live/ShowImageXML.asp?SecId=hxeisxpgsvainlo&Id=P12&ImgId=W1023133&z=1565604842"
+        },
+        {
+          "Id": 13,
+          "PictureURL": "https://media-webapi.resales-online.com/live/ShowImageXML.asp?SecId=hxeisxpgsvainlo&Id=P13&ImgId=W1023133&z=1565604842"
+        }
+      ]
+    }
+  }
+}

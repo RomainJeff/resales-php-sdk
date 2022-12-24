@@ -255,52 +255,6 @@ class Property
         return $this->resalesLink;
     }
 
-    /**
-     * @param \SimpleXMLElement $xml
-     * @return Property
-     */
-    public static function createFromXML(\SimpleXMLElement $xml)
-    {
-        $property = new self();
-        $property->reference = (string) $xml->Reference;
-        $property->agencyReference = (string) $xml->AgencyRef;
-        $property->country = (string) $xml->Country;
-        $property->area = (string) $xml->Area;
-        $property->location = (string) $xml->Location;
-        $property->type = (string) $xml->ROLType;
-        $property->subType = (string) $xml->ROLSubType;
-        $property->bedrooms = (int) $xml->Bedrooms;
-        $property->bathrooms = (int) $xml->Bathrooms;
-        $property->currency = (string) $xml->Currency;
-        $property->originalPrice = (int) $xml->OriginalPrice;
-        $property->price = (int) $xml->Price;
-        $property->surface = (int) $xml->Built;
-        $property->terraceSurface = (int) $xml->Terrace;
-        $property->plotSurface = (int) $xml->GardenPlot;
-        $property->hasPool = (int) $xml->Pool === 1;
-        $property->hasParking = (int) $xml->Parking === 1;
-        $property->hasGarden = (int) $xml->Garden === 1;
-        $property->description = (string) $xml->Description;
-        $property->resalesLink = self::RESALES_LINK . str_replace('R', '', $property->reference);
-
-        // extract features
-        foreach ($xml->PropertyFeatures->Category as $category) {
-            $name = (string) $category->attributes()['Type'];
-            $property->features[$name] = [];
-
-            foreach ($category as $feature) {
-                $property->features[$name][] = (string) $feature;
-            }
-        }
-
-        // extract pictures
-        foreach ($xml->Pictures->Picture as $picture) {
-            $property->pictures[] = (string) $picture->PictureURL;
-        }
-
-        return $property;
-    }
-
     public static function createFromJSON(array $json)
     {
         $property = new self();

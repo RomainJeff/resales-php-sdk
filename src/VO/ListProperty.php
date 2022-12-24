@@ -267,58 +267,6 @@ class ListProperty
     }
 
     /**
-     * @param \SimpleXMLElement $xml
-     * @return ListProperty
-     */
-    public static function createFromXML(\SimpleXMLElement $xml)
-    {
-        $property = new self();
-        $property->reference = (string) $xml->Reference;
-        $property->agencyReference = (string) $xml->AgencyRef;
-        $property->country = (string) $xml->Country;
-        $property->area = (string) $xml->Area;
-        $property->location = (string) $xml->Location;
-        $property->type = (string) $xml->TypeVal;
-        $property->subType = (string) $xml->Type;
-        $property->bedrooms = (int) $xml->Bedrooms;
-        $property->bathrooms = (int) $xml->Bathrooms;
-        $property->currency = (string) $xml->Currency;
-        $property->originalPrice = (int) $xml->OriginalPrice;
-        $property->price = (int) $xml->Price;
-        $property->surface = (int) $xml->Built;
-        $property->terraceSurface = (int) $xml->Terrace;
-        $property->plotSurface = (int) $xml->GardenPlot;
-        $property->hasPool = (int) $xml->Pool === 1;
-        $property->hasParking = (int) $xml->Parking === 1;
-        $property->hasGarden = (int) $xml->Garden === 1;
-        $property->description = (string) $xml->Description;
-        $property->resalesLink = self::RESALES_LINK . str_replace('R', '', $property->reference);
-
-        // extract pictures
-        if (!isset($xml->Pictures)) {
-            $property->mainPicture = (string) $xml->MainImage;
-            $property->pictures[] = $property->getMainPicture();
-        } else {
-            foreach ($xml->Pictures->Picture as $picture) {
-                $property->pictures[] = (string) $picture->PictureURL;
-            }
-            $property->mainPicture = $property->getPictures()[0];
-        }
-
-        // extract features
-        foreach ($xml->PropertyFeatures->Category as $category) {
-            $name = (string) $category->attributes()['Name'];
-            $property->features[$name] = [];
-
-            foreach ($category->Feature as $feature) {
-                $property->features[$name][] = (string) $feature->Name;
-            }
-        }
-
-        return $property;
-    }
-
-    /**
      * @param array $json
      * @return ListProperty
      */

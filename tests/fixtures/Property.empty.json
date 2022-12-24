@@ -1,0 +1,13 @@
+{
+  "transaction": {
+    "status": "error",
+    "incomingIp": "80.26.37.155",
+    "version": "6.0",
+    "service": "Property Details",
+    "datetime": "06-09-2019 14:25:06"
+  },
+  "QueryInfo": {
+    "ApiId": "5950",
+    "QueryId": ""
+  }
+}

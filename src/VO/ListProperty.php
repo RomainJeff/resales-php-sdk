@@ -330,8 +330,8 @@ class ListProperty
         $property->country = $json['Country'];
         $property->area = $json['Area'];
         $property->location = $json['Location'];
-        $property->type = $json['TypeVal'];
-        $property->subType = $json['Type'];
+        $property->type = $json['PropertyType']['Type'];
+        $property->subType = $json['PropertyType']['Subtype1'];
         $property->bedrooms = (int) $json['Bedrooms'];
         $property->bathrooms = (int) $json['Bathrooms'];
         $property->currency = $json['Currency'];
@@ -363,18 +363,8 @@ class ListProperty
 
         // extract features
         foreach ($json['PropertyFeatures']['Category'] as $category) {
-            if (!isset($category['@attributes'])) continue;
-
-            $name = $category['@attributes']['Type'];
-            $property->features[$name] = [];
-
-            if (is_array($category['Value'])) {
-                foreach ($category['Value'] as $feature) {
-                    $property->features[$name][] = $feature;
-                }
-            } else {
-                $property->features[$name][] = $category['Value'];
-            }
+            $name = $category['Type'];
+            $property->features[$name] = $category['Value'];
         }
 
         return $property;

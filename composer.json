@@ -5,7 +5,7 @@
   "license": "MIT",
   "authors": [{
     "name": "Romain Quilliot",
-    "email": "hello@romainquilliot.fr",
+    "email": "hello@romainquilliot.fr"
   }],
   "autoload": {
     "psr-4": {
